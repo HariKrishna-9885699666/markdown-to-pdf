@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    --background: 220 25% 7%;
+    --foreground: 210 20% 92%;
+
+    --card: 220 22% 10%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 220 22% 12%;
+    --popover-foreground: 210 20% 92%;
+
+    --primary: 172 66% 50%;
+    --primary-foreground: 220 25% 7%;
+
+    --secondary: 220 20% 14%;
+    --secondary-foreground: 210 20% 85%;
+
+    --muted: 220 18% 16%;
+    --muted-foreground: 215 15% 55%;
+
+    --accent: 172 66% 50%;
+    --accent-foreground: 220 25% 7%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 18% 18%;
+    --input: 220 18% 18%;
+    --ring: 172 66% 50%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 220 22% 10%;
+    --sidebar-foreground: 210 20% 85%;
+    --sidebar-primary: 172 66% 50%;
+    --sidebar-primary-foreground: 220 25% 7%;
+    --sidebar-accent: 220 18% 16%;
+    --sidebar-accent-foreground: 210 20% 85%;
+    --sidebar-border: 220 18% 18%;
+    --sidebar-ring: 172 66% 50%;
+
+    /* Custom tokens */
+    --editor-bg: 220 25% 9%;
+    --preview-bg: 220 22% 11%;
+    --toolbar-bg: 220 22% 8%;
+    --toolbar-border: 220 18% 15%;
+    --glow-primary: 172 66% 50%;
+    --surface-hover: 220 18% 18%;
+    --text-bright: 210 20% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(220 25% 7%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(220 18% 22%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(220 18% 28%);
+}
+
+/* Preview markdown styles */
+.markdown-preview {
+  @apply text-foreground leading-relaxed;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.markdown-preview h1 {
+  @apply text-3xl font-bold mt-8 mb-4 pb-2 border-b border-border;
+  color: hsl(var(--text-bright));
+}
+
+.markdown-preview h2 {
+  @apply text-2xl font-semibold mt-6 mb-3 pb-1.5 border-b border-border;
+  color: hsl(var(--text-bright));
+}
+
+.markdown-preview h3 {
+  @apply text-xl font-semibold mt-5 mb-2;
+  color: hsl(var(--text-bright));
+}
+
+.markdown-preview h4, .markdown-preview h5, .markdown-preview h6 {
+  @apply font-semibold mt-4 mb-2;
+  color: hsl(var(--text-bright));
+}
+
+.markdown-preview p {
+  @apply mb-4 leading-7;
+}
+
+.markdown-preview a {
+  color: hsl(var(--primary));
+  @apply underline underline-offset-2 hover:opacity-80 transition-opacity;
+}
+
+.markdown-preview ul {
+  @apply list-disc pl-6 mb-4 space-y-1;
+}
+
+.markdown-preview ol {
+  @apply list-decimal pl-6 mb-4 space-y-1;
+}
+
+.markdown-preview li {
+  @apply leading-7;
+}
+
+.markdown-preview blockquote {
+  @apply border-l-4 pl-4 italic my-4;
+  border-color: hsl(var(--primary));
+  color: hsl(var(--muted-foreground));
+}
+
+.markdown-preview code:not(pre code) {
+  @apply px-1.5 py-0.5 rounded text-sm font-mono;
+  background: hsl(var(--muted));
+  color: hsl(var(--primary));
+}
+
+.markdown-preview pre {
+  @apply rounded-lg p-4 mb-4 overflow-x-auto text-sm;
+  background: hsl(var(--editor-bg)) !important;
+  border: 1px solid hsl(var(--border));
+}
+
+.markdown-preview pre code {
+  @apply font-mono text-sm;
+  background: transparent !important;
+  color: hsl(var(--foreground));
+}
+
+.markdown-preview table {
+  @apply w-full mb-4 border-collapse;
+}
+
+.markdown-preview th {
+  @apply px-4 py-2 text-left font-semibold border border-border;
+  background: hsl(var(--muted));
+}
+
+.markdown-preview td {
+  @apply px-4 py-2 border border-border;
+}
+
+.markdown-preview tr:nth-child(even) {
+  background: hsl(var(--muted) / 0.3);
+}
+
+.markdown-preview hr {
+  @apply my-8 border-border;
+}
+
+.markdown-preview img {
+  @apply max-w-full rounded-lg my-4;
+}
+
+.markdown-preview input[type="checkbox"] {
+  @apply mr-2;
+  accent-color: hsl(var(--primary));
+}
+
+/* Theme: GitHub */
+.theme-github .markdown-preview {
+  --text-bright: 210 11% 15%;
+  color: hsl(210 11% 25%);
+}
+
+.theme-github .markdown-preview h1,
+.theme-github .markdown-preview h2 {
+  border-color: hsl(210 18% 87%);
+}
+
+.theme-github .markdown-preview code:not(pre code) {
+  background: hsl(210 25% 95%);
+  color: hsl(215 50% 45%);
+}
+
+.theme-github .markdown-preview blockquote {
+  border-color: hsl(210 18% 80%);
+}
+
+/* Theme: Academic */
+.theme-academic .markdown-preview {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.theme-academic .markdown-preview h1 {
+  @apply text-center;
+  border: none;
+}
+
+.theme-academic .markdown-preview h2 {
+  border: none;
+  @apply uppercase tracking-wide text-lg;
+}
+
+/* Theme: Minimal Dark */
+.theme-dark .markdown-preview {
+  --text-bright: 0 0% 95%;
+}
+
+/* Highlight.js theme override for dark */
+.hljs {
+  background: transparent !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+/* Export preview styles - for PDF rendering */
+.pdf-export-container {
+  background: white;
+  color: #1a1a2e;
+  padding: 40px;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.pdf-export-container h1 { color: #0f0f23; border-color: #e2e8f0; }
+.pdf-export-container h2 { color: #0f0f23; border-color: #e2e8f0; }
+.pdf-export-container h3 { color: #0f0f23; }
+.pdf-export-container a { color: #2b9f93; }
+.pdf-export-container code:not(pre code) { background: #f1f5f9; color: #1e6b63; }
+.pdf-export-container pre { background: #f8fafc !important; border: 1px solid #e2e8f0; }
+.pdf-export-container blockquote { border-color: #2b9f93; color: #64748b; }
+.pdf-export-container th { background: #f1f5f9; }
+.pdf-export-container td, .pdf-export-container th { border-color: #e2e8f0; }
