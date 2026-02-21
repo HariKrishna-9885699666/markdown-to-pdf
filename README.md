@@ -3,7 +3,7 @@
 A clean, modern React application for converting Markdown files or text into formatted PDF documents.
 
 ## Tech Stack
-- React 18
+- React 19
 - Vite
 - TypeScript
 - Tailwind CSS
